@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Subscribe to TalkDrove | Earn Coins! || H.TD</title>
+    <title>Subscribe to DybyTech | Earn Coins! || H.DB</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./styles/main.css">
@@ -255,7 +255,7 @@
 <body>
     <header class="header">
         <div class="header-content">
-            <h1><a class="logo" href="/dashboard">H.TD</a></h1>
+            <h1><a class="logo" href="/dashboard">H.DB</a></h1>
                         <nav class="nav-controls">
             
                 <button id="deployBotBtn" class="btn btn-primary" onclick="window.location.href='/dashboard/select-bot'">
@@ -304,18 +304,18 @@
     <div class="card">
         <div class="channel-info">
             <img src="https://cdn.talkdrove.com/talkdrove/images/lander/TalkDrove_logo.png" alt="TalkDrove" class="channel-logo">
-            <h1>Subscribe to TalkDrove</h1>
+            <h1>Subscribe to DybyTech</h1>
         </div>
         
         <div id="coinBalance">Your balance: <span id="balance">loading</span></div>
         
-        <p>Subscribe to TalkDrove channel and earn 10 coins as a reward!</p>
+        <p>Subscribe to DybyTech channel and earn 10 coins as a reward!</p>
 
         <div class="steps">
             <h3>How to get your reward:</h3>
             <ol>
                 <li>Click the "Subscribe on YouTube" button below</li>
-                <li>Subscribe to TalkDrove channel</li>
+                <li>Subscribe to DybyTech channel</li>
                 <li>Check the confirmation box below</li>
                 <li>Click "Verify Subscription" to receive your reward</li>
             </ol>
@@ -332,7 +332,7 @@
         <div id="subscriptionTimer" class="subscription-timer"></div>
         <div class="checkbox-container">
             <input type="checkbox" id="subscriptionCheckbox" onchange="handleCheckboxChange()">
-            <label for="subscriptionCheckbox">I confirm that I have subscribed to the TalkDrove channel</label>
+            <label for="subscriptionCheckbox">I confirm that I have subscribed to the DybyTech channel</label>
         </div>
         
         <button id="verifyButton" class="button" style="background: var(--success);" disabled="disabled">
@@ -348,7 +348,7 @@
         const VERIFICATION_DELAY = 10; // seconds to wait before enabling verification
 
         function handleSubscribe() {
-            subscribeWindowRef = window.open('https://youtube.com/@TalkDrove', '_blank');
+            subscribeWindowRef = window.open('https://youtube.com/@dybytech00', '_blank');
             document.getElementById('subscriptionCheckbox').disabled = false;
             startVerificationTimer();
         }
