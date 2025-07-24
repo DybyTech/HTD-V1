@@ -22,9 +22,10 @@ This document explains how to configure and run the Host TalkDrove application o
 3. **Configure environment variables**
    - Copy `.env` from the repository and fill in your database credentials and other values.
    - Ensure the MySQL server is reachable with the credentials provided.
-4. **Initialize the database**
-   - Create the database specified in `DB_NAME`.
-   - Import any schema required by the application (tables such as `users`, `bots`, etc.).
+4. **Run the web installer**
+   - Start the server with `npm start` and browse to `/install`.
+   - Provide your MySQL credentials and initial admin user information.
+   - The installer will import `api/talkdrove.sql` and configure the `.env` file.
 5. **Start the development server**
    ```bash
    npm run dev

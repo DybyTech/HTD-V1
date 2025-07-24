@@ -76,6 +76,13 @@ The service will listen on the port configured in the `.env` file (default `3000
 For additional details about preparing the environment and database, see
 [`docs/setup.md`](docs/setup.md).
 
+### Web Based Installer
+
+On a fresh clone with no database configured you can visit `/install` after
+starting the server. This page lets you provide MySQL credentials and create the
+first admin account. The installer imports `api/talkdrove.sql`, saves the
+database details into `.env` and then removes itself for security.
+
 ## Deploying Bots to Heroku
 
 TalkDrove integrates with the Heroku platform for bot hosting. When a user starts

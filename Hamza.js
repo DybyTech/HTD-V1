@@ -6,8 +6,9 @@ const bodyParser = require('body-parser');
 const cron = require('node-cron');
 const path = require('path');
 
-const {updateApiKeyStatus, checkApiKeyValidity} = require('./api/routes/apis/apiStatus.js') 
+const {updateApiKeyStatus, checkApiKeyValidity} = require('./api/routes/apis/apiStatus.js')
 const pool = require('./api/database/sqlConnection.js');
+const installRoutes = require('./api/routes/installRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,31 +19,35 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));  
 
 
-const sessionStore = new MySQLStore({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    clearExpired: true, 
-    checkExpirationInterval: 900000, 
-    expiration: 5 * 24 * 60 * 60 * 1000, 
-});
-app.use(session({
-    key: 'talkdrove-session',
-    secret: process.env.SESSION_SECRET,
-    store: sessionStore,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        secure: process.env.NODE_ENV === 'production',
-        maxAge: 5 * 24 * 60 * 60 * 1000 
-    }
-}));
+if (process.env.DB_HOST) {
+    const sessionStore = new MySQLStore({
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME,
+        clearExpired: true,
+        checkExpirationInterval: 900000,
+        expiration: 5 * 24 * 60 * 60 * 1000,
+    });
+    app.use(session({
+        key: 'talkdrove-session',
+        secret: process.env.SESSION_SECRET,
+        store: sessionStore,
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            secure: process.env.NODE_ENV === 'production',
+            maxAge: 5 * 24 * 60 * 60 * 1000
+        }
+    }));
+}
 
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
+
+app.use('/', installRoutes);
 
 
 const dashboard = require('./api/routes/dashboardRoutes.js');
